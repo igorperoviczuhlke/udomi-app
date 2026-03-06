@@ -1,0 +1,127 @@
+/* /src/app/components/add-new-pet-form-component/add-new-pet-form-component.css */
+.form-field {
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+    align-items: stretch;
+    width: 100%;
+}
+
+/* anchors are used as labels in the template; style them like accessible labels */
+.form-field a,
+a[for] {
+    display: inline-block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #0f172a;
+    text-decoration: none;
+    cursor: pointer;
+    user-select: none;
+}
+
+/* Visible focus for keyboard users */
+.form-field a:focus,
+a[for]:focus,
+.form-field a:focus-visible,
+a[for]:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
+    border-radius: 4px;
+}
+
+/* Small helper spacing for inputs and error messages inside a .form-field */
+.form-field > input,
+.form-field > textarea,
+.form-field > select,
+.form-field > .error-message {
+    width: 100%;
+}
+/* Custom element or class <error-message> */
+error-message,
+.error-message {
+    display: block;
+    color: #b00020; /* high contrast error red */
+    background: transparent;
+    font-size: 0.875rem;
+    line-height: 1.2;
+    margin-top: 0.25rem;
+}
+
+/* Generic input styling with accessible focus and invalid states */
+input,
+textarea,
+select {
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    font-size: 1rem;
+    color: #0f172a;
+    background: #ffffff;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    transition: border-color 120ms ease, box-shadow 120ms ease;
+}
+
+/* Visible, high-contrast focus ring for keyboard users */
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 4px rgba(37,99,235,0.12);
+}
+
+/* Error state via ARIA */
+input[aria-invalid="true"],
+textarea[aria-invalid="true"],
+select[aria-invalid="true"] {
+    border-color: #b00020;
+    box-shadow: 0 0 0 4px rgba(176,0,32,0.08);
+}
+
+/* Lightweight default for generic divs; keep non-invasive */
+div {
+    box-sizing: border-box;
+}
+
+/* Buttons with accessible focus, clear affordance and disabled state */
+button {
+    -webkit-font-smoothing: antialiased;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1;
+    color: #ffffff;
+    background: linear-gradient(180deg, #2563eb 0%, #1e40af 100%);
+    border: 1px solid transparent;
+    border-radius: 6px;
+    cursor: pointer;
+    user-select: none;
+    transition: transform 80ms ease, box-shadow 120ms ease, opacity 120ms ease;
+}
+
+/* Focus ring for buttons */
+button:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(37,99,235,0.18);
+}
+
+/* Active press feedback */
+button:active {
+    transform: translateY(1px);
+}
+
+/* Disabled button state */
+button[disabled],
+button:disabled {
+    background: #9ca3af;
+    color: #ffffff;
+    opacity: 0.75;
+    cursor: not-allowed;
+    box-shadow: none;
+}

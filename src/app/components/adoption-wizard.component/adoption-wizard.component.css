@@ -1,0 +1,15 @@
+.mat-stepper-horizontal {
+  margin-top: 8px;
+}
+
+.mat-mdc-form-field {
+  margin-top: 16px;
+}
+
+#wrapper { display: flex; margin: 5px;}
+
+#first { flex: 1; }
+
+#second { flex: 1; margin-left: 10px;}
+
+#third { flex: 1; margin-left: 10px;}

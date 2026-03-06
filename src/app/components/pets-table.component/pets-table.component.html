@@ -1,0 +1,31 @@
+  <div *mobxAutorun>
+    <div style="display: flex">
+      <div style="flex: 1; margin-left: 200px; justify-items: center;">
+        <h2>Choose a pet from a list below</h2>
+      </div>
+      <div style="float: right; margin-right: 20px;">
+        <app-add-new-entry-component></app-add-new-entry-component>
+        <app-adopt-component></app-adopt-component>
+      </div>
+    </div>
+
+    @if(this.isLoading()){
+      <mat-spinner class="spinner-overlay" diameter="175" strokeWidth="5"></mat-spinner>
+    }
+   
+    <div class="content" style="margin-top: 10pt;">
+      <!-- The AG Grid component, with Dimensions, CSS Theme, Row Data, and Column Definition -->
+      <ag-grid-angular
+        style="width: 100%; height: 550px;"
+        [rowData]="this.store.getGridData"
+        [columnDefs]="colDefs"
+        [defaultColDef]="defaultColDef"
+        [pagination]="true"
+        [paginationPageSize]=10
+        [paginationPageSizeSelector]="[10, 20, 50]"
+        (gridReady)="onGridReady($event)"
+        (cellValueChanged)="onCellValueChanged($event)"
+        [gridOptions]="gridOptions"
+      />
+    </div>
+  </div>

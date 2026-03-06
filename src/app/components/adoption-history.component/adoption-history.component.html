@@ -1,0 +1,18 @@
+<div>
+<h1>Adoption history</h1>
+@if(this.store.adopter?.name != null){
+<h2>{{this.store.adopter?.name}},</h2>
+<!-- <h2>{{this.test()?.name}},</h2> -->
+}
+@if(this.store.adoptionHistory.length > 0){
+    <h2>You have adopted:</h2>
+    @for(happyPet of this.store.adoptionHistory; track $index){
+        <p> - {{happyPet.name}}</p>
+    }
+}
+@else {
+    <p>
+        You have not adopted anybody! :(
+    </p>
+}
+</div>

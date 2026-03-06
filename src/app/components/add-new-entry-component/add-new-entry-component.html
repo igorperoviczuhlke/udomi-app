@@ -1,0 +1,9 @@
+<dialog style="width: 33%;" #myDialog>
+   <app-add-new-pet-form-component 
+    (dialogClosed)="myDialog.close()">
+    </app-add-new-pet-form-component>
+</dialog> 
+<button mat-raised-button color="primary" 
+    (click)="myDialog.showModal()">
+    Add new pet
+</button> 

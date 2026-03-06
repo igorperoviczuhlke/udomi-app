@@ -1,0 +1,62 @@
+<form [formGroup]="newPetForm" (ngSubmit)="onSubmit()">
+  <mat-form-field style="width: 100%;">
+    <mat-label>Name:</mat-label>
+    <input matInput type="text" formControlName="name" placeholder="Name" />
+    @if(newPetForm.get('name')?.invalid && newPetForm.get('name')?.touched){
+      <div class="error-message">Name is required</div>
+    }
+  </mat-form-field>
+  <mat-form-field style="width: 100%;">
+    <mat-label>Breed:</mat-label>
+    <input matInput type="text" formControlName="breed" placeholder="Breed" />
+    @if(newPetForm.get('breed')?.invalid && newPetForm.get('breed')?.touched){
+      <div class="error-message">Breed is required</div>
+    }
+  </mat-form-field>
+  <mat-form-field style="width: 100%;">
+    <mat-label>Age:</mat-label>
+    <input matInput type="number" formControlName="age" placeholder="Age" />
+    @if(newPetForm.get('age')?.invalid && newPetForm.get('age')?.touched){
+      <div class="error-message">Age is required and must be 0 or larger</div>
+    }
+  </mat-form-field>
+  <mat-form-field style="width: 100%;">
+    <mat-label>Size (cm):</mat-label>
+    <input matInput type="number" formControlName="size" placeholder="Size (cm)" />
+    @if(newPetForm.get('size')?.invalid && newPetForm.get('size')?.touched){
+      <div class="error-message">Size is required and must be 0 or larger</div>
+    }
+  </mat-form-field>
+  <button matButton type="submit" [disabled]="newPetForm.invalid">Give away Pet</button>
+  <button matButton style="margin-left: 10px;" type="button" (click)="closeDialog()">Cancel</button>
+</form>
+<app-reusable-dialog-component></app-reusable-dialog-component>
+
+<!-- <form [formGroup]="newPetForm" (ngSubmit)="onSubmit()">
+
+  <div class="form-field">
+    <a for="name">Name:</a>
+    <input type="text" formControlName="name" placeholder="Name" />
+    <div class="error-message" *ngIf="newPetForm.get('name')?.invalid && newPetForm.get('name')?.touched">Name is required</div>
+  </div>
+  <div class="form-field">
+    <a for="breed">Breed:</a>
+  <input type="text" formControlName="breed" placeholder="Breed" />
+  <div class="error-message" *ngIf="newPetForm.get('breed')?.invalid && newPetForm.get('breed')?.touched">Breed is required</div>
+    </div>
+    <div>
+        <a for="age">Age:</a>
+  <input type="number" formControlName="age" placeholder="Age" />
+  <div class="error-message" *ngIf="newPetForm.get('age')?.invalid && newPetForm.get('age')?.touched">Age is required and must be 0 or larger</div>
+    </div>
+    <div class="form-field">
+        <a for="size">Size (cm):</a>
+  <input type="number" formControlName="size" placeholder="Size (cm)" />
+  <div class="error-message" *ngIf="newPetForm.get('size')?.invalid && newPetForm.get('size')?.touched">Size is required and must be 0 or larger</div>
+    </div>
+  <!-- <label>
+    <input type="checkbox" formControlName="adopting" /> Adopting
+  </label> -->
+  <!-- <button type="submit" [disabled]="newPetForm.invalid">Give away Pet</button>
+  <button style="margin-left: 10px;" type="button" (click)="closeDialog()">Cancel</button>
+</form> --> 

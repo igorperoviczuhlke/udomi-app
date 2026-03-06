@@ -1,0 +1,19 @@
+<div class="header" style="display: flex;">
+  <div style="margin: 10px;">
+  <app-menu></app-menu>
+  </div>
+  <div style="flex: 1; margin-left: -120px; justify-items: center;">
+  <h1>Pet Adoption</h1>
+  </div>
+</div>
+
+<!-- <nav class="nav nav-pills nav-fill">
+  <a class="nav-link" routerLinkActive="active-link" [routerLink]="['/PetsTableComponent']">
+    <i class="bi bi-people-fill">All Pets</i>
+  </a>
+  <a class="nav-link" routerLinkActive="active-link" [routerLink]="!canAdopt() ? null : ['/AdoptionsTableComponent']">
+    <i class="bi bi-people-fill">Adoptions</i>
+  </a>
+</nav> -->
+
+<router-outlet />

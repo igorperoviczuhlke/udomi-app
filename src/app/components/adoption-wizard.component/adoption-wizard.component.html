@@ -1,0 +1,111 @@
+<mat-stepper linear #stepper>
+  <mat-step [stepControl]="adopterFormGroup" [editable]="isEditable">
+    <form [formGroup]="adopterFormGroup">
+      <ng-template matStepLabel>Adopter data</ng-template>
+      <div>
+      <mat-form-field style="width: 100%;">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="adopterName" placeholder="Last name, First name" required>
+      </mat-form-field>
+      </div>
+      <div>
+      <mat-form-field style="width: 100%;">
+        <mat-label>Email</mat-label>
+        <input type="email" matInput formControlName="email" placeholder="test@test.me" required>
+      </mat-form-field>
+      </div>
+      <div>
+      <mat-form-field style="width: 100%;">
+        <mat-label>Phone number</mat-label>
+        <input matInput formControlName="phoneNumber" placeholder="666666" required>
+      </mat-form-field>
+      </div>
+      <div>
+      <mat-form-field style="width: 100%;">
+        <mat-label>Living type</mat-label>
+        <mat-select matNativeControl formControlName="livingType" placeholder="Hell" required>
+          @for (housing of housings; track housing) {
+            <mat-option [value]="housing.value">{{housing.viewValue}}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      </div>
+      <div>
+        <button matButton (click)="closeWizardDialog()">Cancel</button>
+        <button matButton [disabled]="!this.adopterFormGroup.valid" matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="homeSetupFormGroup" [editable]="isEditable">
+    <form [formGroup]="homeSetupFormGroup">
+      <ng-template matStepLabel>Home setup</ng-template>
+        <mat-form-field style="width: 100%;">
+          <mat-checkbox #hasGarden matInput formControlName="hasGarden">
+            Have garden?
+            <input matInput hidden>
+          </mat-checkbox>
+        </mat-form-field>
+        <mat-form-field style="width: 100%;">
+          <input matInput hidden>
+          <mat-checkbox #hasKids matInput formControlName="hasKids">
+            Have kids?
+          </mat-checkbox>
+        </mat-form-field>
+        <mat-form-field style="width: 100%;">
+          <input matInput hidden>
+          <mat-checkbox #hasOtherPets matInput formControlName="hasOtherPets" (change)="this.hasOtherPets.set($event.checked)">
+            Have other pets?
+          </mat-checkbox>
+          @if(this.hasOtherPets()){
+             <mat-form-field style="width: 100%;">
+              <mat-label>How many other pets?</mat-label>
+              <input type="number" #otherPetsCount matInput formControlName="otherPetsCount" (change)="this.setOtherPetsCount($event)">
+            </mat-form-field>
+          }
+        </mat-form-field>
+      <div>
+        <button matButton matStepperPrevious>Back</button>
+        <button matButton (click)="closeWizardDialog()">Cancel</button>
+        <button matButton [disabled]="!(hasGarden.checked || hasKids.checked || (this.hasOtherPets() && this.otherPetsCount() > 0))" matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step >
+    <form [formGroup]="doneFormGroup" (ngSubmit)="onSubmit()">
+    <ng-template matStepLabel>Done</ng-template>
+    <div>
+      <div id="wrapper">
+        <div id="first">
+          <div>{{adopterFormGroup.value.adopterName}}</div>
+          <div>{{adopterFormGroup.value.email}}</div>
+          <div>{{adopterFormGroup.value.phoneNumber}}</div>
+          <div>{{adopterFormGroup.value.livingType}}</div>
+        </div>
+        <div id="second">
+          <!-- {{this.petService.selectedPetSignal()?.name}} is a {{this.petService.selectedPetSignal()?.breed}} and is {{this.petService.selectedPetSignal()?.age}} years old. -->
+           {{this.selectedPet()?.name}} is a {{this.selectedPet()?.breed}} and is {{this.selectedPet()?.age}} years old.
+        </div>
+      <div id="third">
+        You will be taking it home to:
+        @if (hasKids.checked){
+         kids 
+        }
+        @if (this.hasOtherPets()){
+          <div>{{this.homeSituation()?.otherPetsCount}} other pets</div>
+        }
+        @if (hasGarden.checked){
+         <div> a garden</div>
+        }
+      </div>
+    </div>
+    </div>
+    <div>
+      <button matButton type="button" matStepperPrevious>Back</button>
+      <button matButton type="button" (click)="closeWizardDialog()">Cancel</button>
+      <button matButton type="button" (click)="stepper.reset()">Reset</button>
+      <button matButton type="submit">Submit</button>
+    </div>
+    </form>
+  </mat-step>
+</mat-stepper>
+<app-reusable-dialog-component></app-reusable-dialog-component>

@@ -1,0 +1,15 @@
+<dialog #homeSetupDialog>
+    <app-adoption-wizard (dialogClosed)="homeSetupDialog.close()"></app-adoption-wizard>
+</dialog>
+<button mat-raised-button
+    color="primary" 
+    [disabled]="this.store.selectedPet == null" 
+    (click)="homeSetupDialog.showModal()"
+     *mobxAutorun
+    >
+    Adopt me
+</button>
+
+
+
+

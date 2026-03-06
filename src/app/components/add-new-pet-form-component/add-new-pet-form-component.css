@@ -1,0 +1,43 @@
+/* Buttons with accessible focus, clear affordance and disabled state */
+button {
+    -webkit-font-smoothing: antialiased;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1;
+    color: #ffffff;
+    background: linear-gradient(180deg, #2563eb 0%, #1e40af 100%);
+    border: 1px solid transparent;
+    border-radius: 6px;
+    cursor: pointer;
+    user-select: none;
+    transition: transform 80ms ease, box-shadow 120ms ease, opacity 120ms ease;
+}
+
+/* Focus ring for buttons */
+button:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(37,99,235,0.18);
+}
+
+/* Active press feedback */
+button:active {
+    transform: translateY(1px);
+}
+
+/* Disabled button state */
+button[disabled],
+button:disabled {
+    background: #9ca3af;
+    color: #ffffff;
+    opacity: 0.75;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.mat-mdc-form-field {
+  margin-top: 16px;
+}

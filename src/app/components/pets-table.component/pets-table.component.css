@@ -1,0 +1,23 @@
+/* CSS */
+.spinner-overlay {
+  /* Position it fixed to cover the entire viewport */
+  position: fixed;
+  top: 37%;
+  left: 45%;
+  
+  width: 100%;
+  height: 100%;
+  /* Add a semi-transparent background to block user interaction */
+  /* Center the spinner */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* Ensure it is on top of other content */
+  z-index: 9999;
+}
+
+.my-line {
+  border: none; /* Remove default border */
+  border-top: 2px solid #ccc; /* Add a solid top border as the line */
+  margin: 20px 0; /* Add some vertical spacing */
+}

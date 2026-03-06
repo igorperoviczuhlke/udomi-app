@@ -1,0 +1,92 @@
+:host {
+    display: block;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    color: #0b1220;
+}
+
+/* Base box-sizing */
+button, a, div {
+    box-sizing: border-box;
+}
+
+/* Container / block elements */
+div {
+    width: 100%;
+    padding: 0.75rem;
+    margin: 0.5rem 0;
+    background-color: #f7fbff; /* very light background for separation */
+    border: 1px solid #e6f0fb;
+    border-radius: 8px;
+    color: inherit;
+}
+
+/* Links */
+a {
+    color: #005fcc;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+/* Buttons */
+button {
+    -webkit-font-smoothing: antialiased;
+    font-size: 1rem;
+    line-height: 1.25;
+    padding: 0.5rem 0.9rem;
+    border-radius: 6px;
+    border: none;
+    background-color: #005fcc; /* high-contrast blue */
+    color: #ffffff;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Disabled controls */
+button:disabled,
+button[disabled] {
+    opacity: 0.5;
+    cursor: default;
+    pointer-events: none;
+}
+
+/* Hover / active affordances */
+button:hover,
+a:hover {
+    filter: brightness(0.95);
+    text-decoration-color: rgba(0,0,0,0.25);
+}
+
+/* Focus styles (keyboard accessible) */
+:focus-visible {
+    outline: 3px solid #ffbf47; /* strong visible focus ring */
+    outline-offset: 3px;
+    box-shadow: none;
+}
+
+/* Ensure focus is applied to interactive elements */
+button:focus-visible,
+a:focus-visible {
+    outline: 3px solid #ffbf47;
+    outline-offset: 3px;
+    border-radius: 6px;
+}
+
+/* Motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    button, a {
+        transition: none !important;
+    }
+}
+
+/* Small responsive adjustments */
+@media (max-width: 420px) {
+    button {
+        width: 100%;
+        padding: 0.75rem;
+    }
+}

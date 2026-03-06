@@ -1,0 +1,23 @@
+<form [formGroup]="homeSetupForm" (ngSubmit)="onSubmit()">
+    <div class="form-field" > 
+        <a style="width: 90%;" for="hasGarden">Do you have a garden?</a>  
+        <input style="width: 10%;" type="checkbox" formControlName="hasGarden" />
+    </div>
+    <div class="form-field" > 
+        <a style="width: 90%;" for="hasOtherPets">Do you have other pets?</a>
+        <input style="width: 10%;" type="checkbox" formControlName="hasOtherPets" />
+    </div>
+    @if(homeSetupForm.value.hasOtherPets) {
+        <div class="form-field">    
+            <a for="otherPetsCount">Other pets count:</a>
+            <input style="display: inline-flex;" type="number" formControlName="otherPetsCount"  />
+        </div>
+    }
+    <div class="form-field" >  
+        <a style="width: 90%;" for="hasKids">Do you have kids?</a> 
+        <input style="width: 10%;" type="checkbox" formControlName="hasKids" />
+    </div>
+    <button type="submit" [disabled]="!isValidSignal()">Take me home</button>
+    <button style="margin-left: 10px;" type="button" (click)="closeDialog()">Cancel</button>
+</form>
+
