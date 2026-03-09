@@ -21,4 +21,8 @@ export class MenuComponent {
   goToSeeAdoptions(){
     this.router.navigate(['/AdoptionHistoryComponent']);     
   }
+
+  goToTestSignalR(){
+    this.router.navigate(['/SignalRComponent']);     
+  }
 }

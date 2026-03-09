@@ -1,0 +1,9 @@
+<p>signal-r-component works!</p>
+<div>
+  <input [(ngModel)]="user" placeholder="User" />
+  <input [(ngModel)]="message" placeholder="Message" />
+  <button (click)="sendMessage()">Send</button>
+  @for(msg of this.signalRService.messages(); track $index){
+    <p>{{ msg }}</p>
+    }
+</div>
